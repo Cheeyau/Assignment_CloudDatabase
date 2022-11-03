@@ -17,6 +17,7 @@ var storageAccountName = replace(toLower('${resourcePrefix}-SA-1'), '-', '')
 var functionAppName = '${resourcePrefix}-FA-1'
 var serverFarmName = '${resourcePrefix}-ASP-1'
 
+
 // blob container
 
 resource blobChatContainer 'Microsoft.Storage/storageAccounts/blobServices/containers@2022-05-01' = {
@@ -79,7 +80,7 @@ resource blobService 'Microsoft.Storage/storageAccounts/blobServices@2022-05-01'
 // queue
 
 resource queueBlob 'Microsoft.Storage/storageAccounts/queueServices/queues@2022-05-01' = {
-  name: 'gta-services-wait'
+  name: 'assetsqueue'
   parent: queueServices
 }
 

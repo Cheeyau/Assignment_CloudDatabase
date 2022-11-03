@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionApp1", "FunctionApp1\FunctionApp1.csproj", "{BEEA10A7-2C16-4256-AB00-7D4E0078AE16}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudDatabase", "CloudDatabase\CloudDatabase.csproj", "{63C1044A-FDED-4EB7-AE03-6A8763D41E98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{DEB96D04-C1F3-4814-9935-FCEC106C1064}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BEEA10A7-2C16-4256-AB00-7D4E0078AE16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BEEA10A7-2C16-4256-AB00-7D4E0078AE16}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BEEA10A7-2C16-4256-AB00-7D4E0078AE16}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BEEA10A7-2C16-4256-AB00-7D4E0078AE16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63C1044A-FDED-4EB7-AE03-6A8763D41E98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63C1044A-FDED-4EB7-AE03-6A8763D41E98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63C1044A-FDED-4EB7-AE03-6A8763D41E98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63C1044A-FDED-4EB7-AE03-6A8763D41E98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEB96D04-C1F3-4814-9935-FCEC106C1064}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEB96D04-C1F3-4814-9935-FCEC106C1064}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEB96D04-C1F3-4814-9935-FCEC106C1064}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEB96D04-C1F3-4814-9935-FCEC106C1064}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

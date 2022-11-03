@@ -43,6 +43,7 @@ jobs:
         pushd './${{ env.publish_name }}'
         dotnet build --configuration ${{ env.configuration }} --output ${{ env.out_path }}
         popd
+    
     - name: push remote
       uses: Azure/functions-action@v1
       with:
