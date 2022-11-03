@@ -260,3 +260,4 @@ paket-files/
 __pycache__/
 *.pyc
 .idea
+/widget_co/DAL/ContextString.cs
