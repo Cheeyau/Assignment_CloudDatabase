@@ -9,7 +9,7 @@ namespace Domain.DTO
     public class ReviewDTO
     {
         public string? UserId { get; set; }
-        public string ProductId { get; set; }
-        public string ReviewText { get; set; }
+        public string? ProductId { get; set; }
+        public string? ReviewText { get; set; }
     }
 }
