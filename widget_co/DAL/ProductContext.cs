@@ -1,17 +1,17 @@
-﻿using System;
+﻿using Domain;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Domain;
-using Microsoft.EntityFrameworkCore;
 
 namespace DAL
 {
-    public class UserContext : DbContext
+    internal class ProductContext
     {
-        public DbSet<User> Users { get; set; }
-        public UserContext(DbContextOptions<UserContext> options) :base(options)
+        public DbSet<Product> Reviews { get; set; }
+        public ProductContext(DbContextOptions<ProductContext> options) : base(options)
         {
 
         }
