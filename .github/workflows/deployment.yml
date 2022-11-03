@@ -1,5 +1,4 @@
 name: Deploy project to Azure
-name: Deployment master
 
 on:
   push:

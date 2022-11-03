@@ -1,4 +1,4 @@
-name: Deploy Azure Resources Main/Staging
+name: Deploy Azure Resources master
 
 on:
   push:
