@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    internal class ProductContext
+    public class ProductContext : DbContext
     {
         public DbSet<Product> Reviews { get; set; }
         public ProductContext(DbContextOptions<ProductContext> options) : base(options)

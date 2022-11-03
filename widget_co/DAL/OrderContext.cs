@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    internal class OrderContext : DbContext
+    public class OrderContext : DbContext
     {
         public DbSet<Review> Reviews { get; set; }
         public OrderContext(DbContextOptions<OrderContext> options) : base(options)
