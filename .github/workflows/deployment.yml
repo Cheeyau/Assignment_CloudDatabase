@@ -7,7 +7,7 @@ on:
 env:
   publish_name: widget_co
   dotnet_version: '6.x'
-  project_file:  './widget_co/CloudDatabase.csproj'
+  project_file:  './widget_co/CloudDatabase/CloudDatabase.csproj'
   configuration: 'release'
   out_path: './output'
 
