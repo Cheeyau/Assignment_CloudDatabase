@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CloudDatabase.Http
 {
-    internal class ReviewTrigger
+    public class ReviewTrigger
     {
 
     }
