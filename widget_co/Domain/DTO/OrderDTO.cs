@@ -8,8 +8,9 @@ namespace Domain.DTO
 {
     internal class OrderDTO
     {
-        public string? OrderId { get; set; }
-        public Dictionary<ProductDTO, int>? products { get; set; }
+        public string OrderId { get; set; }
+        public string productId { get; set; }
+        public int Amount { get; set; }
         public DateTime? OrderDate { get; set; }
         public DateTime? OrderShippedDate { get; set; }
     }

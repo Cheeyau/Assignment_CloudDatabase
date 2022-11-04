@@ -9,7 +9,8 @@ namespace Domain
     public class Order
     {
         public string OrderId { get; set; }
-        public Dictionary<Product, int> products { get; set; }
+        public string productId { get; set; }
+        public int Amount { get; set; }
         public DateTime OrderDate { get; set; }
         public DateTime? OrderShippedDate { get; set; }
     }

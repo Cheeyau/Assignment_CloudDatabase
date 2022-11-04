@@ -6,30 +6,29 @@ using Repository.Interface;
 using Repository;
 using DAL;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Azure.Functions.Worker.Extensions.OpenApi.Extensions;
 
 public class Program
 {
     public static void Main() {
-        var host = new HostBuilder()
+        IHost host = new HostBuilder()
             .ConfigureFunctionsWorkerDefaults()
-            .ConfigureServices(Configure)
+            .ConfigureOpenApi()
+            .ConfigureServices((HostBuilderContext context, IServiceCollection services) =>
+            {
+                services.AddDbContext<DataBaseContext>(options => options.UseSqlServer(ContextString.getString()));
+
+                services.AddTransient(typeof(IOrderRepository), typeof(OrderRepository));
+                services.AddTransient(typeof(IReviewRepository), typeof(ReviewRepository));
+                services.AddTransient(typeof(IUserRepository), typeof(UserRepository));
+                services.AddTransient(typeof(IProductRepository), typeof(ProductRepository));
+
+                services.AddScoped<IOrderService, OrderService>();
+                services.AddScoped<IProductService, ProductService>();
+                services.AddScoped<IReviewService, ReviewService>();
+                services.AddScoped<IUserService, UserService>();
+            })
             .Build();
-        
         host.Run();
-    }
-
-    static void Configure(HostBuilderContext builder, IServiceCollection services)
-    {
-        services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(ContextString.getString()));
-        
-        services.AddTransient(typeof(IOrderRepository), typeof(OrderRepository));
-        services.AddTransient(typeof(IReviewRepository), typeof(ReviewRepository));
-        services.AddTransient(typeof(IUserRepository), typeof(UserRepository));
-        services.AddTransient(typeof(IProductRepository), typeof(ProductRepository));
-
-        services.AddScoped<IOrderService, OrderService>();
-        services.AddScoped<IProductService, ProductService>();
-        services.AddScoped<IReviewService, ReviewService>();
-        services.AddScoped<IUserService, UserService>();
     }
 }

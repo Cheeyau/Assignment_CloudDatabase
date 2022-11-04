@@ -1,5 +1,6 @@
 ﻿using Domain;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class DatabaseContext : DbContext
+    public class DataBaseContext : DbContext
     {
 
         public DbSet<Review> Reviews { get; set; }
@@ -16,13 +17,17 @@ namespace DAL
         public DbSet<User> Users { get; set; }
         public DbSet<Product> Products { get; set; }
 
-        public DatabaseContext(DbContextOptions options) : base(options)
+        // dotnet ef --startup-project ../CloudDatabase/CloudDatabase.csproj migrations add initDatabase -c DataBaseContext --verbose
+        public DataBaseContext(DbContextOptions<DataBaseContext> options) : base(options)
         {
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(ContextString.getString());
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(ContextString.getString());
+            }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
