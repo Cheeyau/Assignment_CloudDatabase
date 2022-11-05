@@ -19,6 +19,13 @@
       "type": "mssql.azure",
       "connectionId": "cloudDatabase",
       "dynamicId": null
+    },
+    "storage1": {
+      "secretStore": "LocalSecretsFile",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/amcloudappdazwesa1",
+      "type": "storage.azure",
+      "connectionId": "DefaultEndpointsProtocol=https;AccountName=amcloudappdazwesa1;AccountKey=dOgGVaGvlTpVJjaIWvNxEUnj9oNADRVzaK60s5HJMTamMUETmLFrIjH02VvOdh93IifUYEQzR2/n+AStiuQEsA==;EndpointSuffix=core.windows.net",
+      "dynamicId": null
     }
   }
 }
