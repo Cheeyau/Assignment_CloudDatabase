@@ -59,7 +59,7 @@ namespace Service
             if (String.IsNullOrEmpty(user.UserId))
                 throw new ArgumentException("Cant find the order.");
 
-            return ((user = await _readRepository.GetAllAsync().FirstOrDefaultAsync(p => p.UserId == user.UserId)) == null) ? user = new() : user;
+            return ((user = await _readRepository.GetAllAsync().FirstOrDefaultAsync(p => p.UserId == user.UserId)) == null) ? throw new ArgumentException("Cant find the user.") : user;
         }
 
         public async Task<User> UpdateAsync(UserDTO UserDTO, string id)

@@ -60,7 +60,7 @@ namespace Service
             if (String.IsNullOrEmpty(product.ProductId))
                 throw new ArgumentException("Cant find the product.");
 
-            return ((product = await _readRepository.GetAllAsync().FirstOrDefaultAsync(p => p.ProductId == product.ProductId)) == null) ? product = new() : product;
+            return ((product = await _readRepository.GetAllAsync().FirstOrDefaultAsync(p => p.ProductId == product.ProductId)) == null) ? throw new ArgumentException("Cant find the product.") : product;
         }
 
         public async Task<Product> UpdateAsync(ProductDTO productDTO, string id)

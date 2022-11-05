@@ -60,7 +60,7 @@ namespace Service
             if (String.IsNullOrEmpty(order.OrderId))
                 throw new ArgumentException("Cant find the order.");
 
-            return ((order = await _readRepository.GetAllAsync().FirstOrDefaultAsync(p => p.OrderId == order.OrderId)) == null) ? order = new() : order;
+            return ((order = await _readRepository.GetAllAsync().FirstOrDefaultAsync(p => p.OrderId == order.OrderId)) == null) ? throw new ArgumentException("Cant find the order.") : order;
         }
 
         public async Task<Order> UpdateAsync(OrderDTO orderDTO, string id)

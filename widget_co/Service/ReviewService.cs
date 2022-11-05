@@ -60,7 +60,7 @@ namespace Service
             if (String.IsNullOrEmpty(review.ReviewId))
                 throw new ArgumentException("Cant find the review.");
 
-            return ((review = await _readRepository.GetAllAsync().FirstOrDefaultAsync(p => p.ReviewId == review.ReviewId)) == null) ?  review = new() : review;
+            return ((review = await _readRepository.GetAllAsync().FirstOrDefaultAsync(p => p.ReviewId == review.ReviewId)) == null) ? throw new ArgumentException("Cant find the review.") : review;
         }
 
         public async Task<Review> UpdateAsync(ReviewDTO reviewDTO, string id)
