@@ -17,18 +17,18 @@ namespace CloudDatabase.Http
 {
     public class OrderTrigger
     {
-        [FunctionName("GetAllOrders")]
-        public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "order/{id}")] HttpRequest req, ILogger log)
-        {
+        //[FunctionName("GetAllOrders")]
+        //public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "order/{id}")] HttpRequest req, ILogger log)
+        //{
             
-            try
-            {
+        //    try
+        //    {
                 
-            }
-            catch
-            {
-                return new NotFoundResult();
-            }
-        }
+        //    }
+        //    catch
+        //    {
+        //        return new NotFoundResult();
+        //    }
+        //}
     }
 }

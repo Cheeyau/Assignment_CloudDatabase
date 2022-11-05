@@ -8,6 +8,7 @@ using DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Azure.Functions.Worker.Extensions.OpenApi.Extensions;
 using Microsoft.Extensions.Configuration;
+using Domain.MapConfig;
 
 public class Program
 {
@@ -24,10 +25,12 @@ public class Program
                 services.AddTransient(typeof(IReadRepository<>), typeof(ReadRepository<>));
                 services.AddTransient(typeof(IUpdateRepository<>), typeof(UpdateRepository<>));
 
-                services.AddScoped<IOrderService, CRUDOrderService>();
-                services.AddScoped<ICRUDService, CRUDProductService>();
-                services.AddScoped<IReviewService, CRUDReviewService>();
-                services.AddScoped<IUserService, CRUDUserService>();
+                services.AddScoped<IOrderService, OrderService>();
+                services.AddScoped<IProductService, ProductService>();
+                services.AddScoped<IReviewService, ReviewService>();
+                services.AddScoped<IUserService, UserService>();
+
+                services.AddAutoMapper(typeof(MappingProfile));
             })
             .Build();
         host.Run();
