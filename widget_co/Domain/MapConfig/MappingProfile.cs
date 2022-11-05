@@ -12,10 +12,10 @@ namespace Domain.MapConfig
     {
         public MappingProfile()
         {
-            CreateMap<Review, ReviewDTO>();
-            CreateMap<Product, ProductDTO>();
-            CreateMap<User, UserDTO>();
-            CreateMap<Order, OrderDTO>();
+            CreateMap<ReviewDTO, Review>();
+            CreateMap<ProductDTO, Product>();
+            CreateMap<UserDTO, User>();
+            CreateMap<OrderDTO, Order>();
         }
     }
 }
