@@ -16,18 +16,10 @@ namespace DAL
         public DbSet<Review> Orders { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Product> Products { get; set; }
-
         // dotnet ef --startup-project ../CloudDatabase/CloudDatabase.csproj migrations add initDatabase -c DataBaseContext --verbose
+        // dotnet ef --startup-project ../CloudDatabase/CloudDatabase.csproj database update -c DataBaseContext --verbose
         public DataBaseContext(DbContextOptions<DataBaseContext> options) : base(options)
         {
-            //Database.EnsureCreated();
-        }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer(ContextString.getString());
-            }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

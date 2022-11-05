@@ -11,6 +11,7 @@ namespace Domain
         public string OrderId { get; set; }
         public string productId { get; set; }
         public int Amount { get; set; }
+        public double Total { get; set; }
         public DateTime OrderDate { get; set; }
         public DateTime? OrderShippedDate { get; set; }
     }

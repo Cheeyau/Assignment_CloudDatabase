@@ -9,8 +9,8 @@ namespace CloudDatabase
         public override OpenApiInfo Info { get; set; } = new OpenApiInfo()
         {
             Version = "1.0.0",
-            Title = "The Golden Tulip Alkmaar service app backend",
-            Description = "The backend API for the application for the Golden Tulip Alkmaar.",
+            Title = "Widget & Co service app backend",
+            Description = "The backend API for the application for the Widget & Co.",
         };
 
         public override OpenApiVersionType OpenApiVersion { get; set; } = OpenApiVersionType.V3;

@@ -7,6 +7,7 @@ using Repository;
 using DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Azure.Functions.Worker.Extensions.OpenApi.Extensions;
+using Microsoft.Extensions.Configuration;
 
 public class Program
 {
@@ -18,15 +19,15 @@ public class Program
             {
                 services.AddDbContext<DataBaseContext>(options => options.UseSqlServer(ContextString.getString()));
 
-                services.AddTransient(typeof(IOrderRepository), typeof(OrderRepository));
-                services.AddTransient(typeof(IReviewRepository), typeof(ReviewRepository));
-                services.AddTransient(typeof(IUserRepository), typeof(UserRepository));
-                services.AddTransient(typeof(IProductRepository), typeof(ProductRepository));
+                services.AddTransient(typeof(ICreateRepository<>), typeof(CreateRepository<>));
+                services.AddTransient(typeof(IDeleteRepository<>), typeof(DeleteRepository<>));
+                services.AddTransient(typeof(IReadRepository<>), typeof(ReadRepository<>));
+                services.AddTransient(typeof(IUpdateRepository<>), typeof(UpdateRepository<>));
 
-                services.AddScoped<IOrderService, OrderService>();
-                services.AddScoped<IProductService, ProductService>();
-                services.AddScoped<IReviewService, ReviewService>();
-                services.AddScoped<IUserService, UserService>();
+                services.AddScoped<IOrderService, CRUDOrderService>();
+                services.AddScoped<ICRUDService, CRUDProductService>();
+                services.AddScoped<IReviewService, CRUDReviewService>();
+                services.AddScoped<IUserService, CRUDUserService>();
             })
             .Build();
         host.Run();

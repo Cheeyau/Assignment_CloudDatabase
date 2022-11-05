@@ -2,6 +2,23 @@
   "dependencies": {
     "appInsights1": {
       "type": "appInsights.sdk"
+    },
+    "secrets1": {
+      "type": "secrets.user"
+    },
+    "mssql1": {
+      "secretStore": "LocalSecretsFile",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/assignmentcloudserver/databases/assignmentcloudDatabase",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings",
+      "dynamicId": null
+    },
+    "mssql2": {
+      "secretStore": "LocalSecretsFile",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/assignmentcloudserver/databases/assignmentcloudDatabase",
+      "type": "mssql.azure",
+      "connectionId": "cloudDatabase",
+      "dynamicId": null
     }
   }
 }
