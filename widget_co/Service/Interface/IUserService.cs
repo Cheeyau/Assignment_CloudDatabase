@@ -10,8 +10,8 @@ namespace Service.Interface
 {
     public interface IUserService
     {
-        Task<IEnumerable<User>> GetAllOrderAsync();
-        Task<User> GetByIDAsync(UserDTO UserDTO);
+        Task<IEnumerable<User>> GetAllAsync();
+        Task<User> GetByIdAsync(UserDTO UserDTO);
         Task<User> CreateAsync(UserDTO UserDTO);
         Task DeleteAsync(UserDTO UserDTO);
         Task<User> UpdateAsync(UserDTO UserDTO, string id);

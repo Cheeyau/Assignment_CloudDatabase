@@ -43,20 +43,22 @@ namespace Service
         public async Task DeleteAsync(ReviewDTO reviewDTO)
         {
             Review review = _mapper.Map<ReviewDTO, Review>(reviewDTO);
-            if (!String.IsNullOrEmpty(review.ReviewId))
-                await _deleteRepository.DeleteAsync(review);
+            if (String.IsNullOrEmpty(review.ReviewId))
+                throw new ArgumentException("Cant find the review.");
+
+            await _deleteRepository.DeleteAsync(review);
         }
 
-        public async Task<IEnumerable<Review>> GetAllReviewAsync()
+        public async Task<IEnumerable<Review>> GetAllAsync()
         {
             return await _readRepository.GetAllAsync().ToListAsync();
         }
 
-        public async Task<Review> GetByIDAsync(ReviewDTO reviewDTO)
+        public async Task<Review> GetByIdAsync(ReviewDTO reviewDTO)
         {
             Review review = _mapper.Map<ReviewDTO, Review>(reviewDTO);
             if (String.IsNullOrEmpty(review.ReviewId))
-                return review = new();
+                throw new ArgumentException("Cant find the review.");
 
             return ((review = await _readRepository.GetAllAsync().FirstOrDefaultAsync(p => p.ReviewId == review.ReviewId)) == null) ?  review = new() : review;
         }
@@ -64,12 +66,12 @@ namespace Service
         public async Task<Review> UpdateAsync(ReviewDTO reviewDTO, string id)
         {
             if (String.IsNullOrEmpty(id))
-                return new Review();
+                throw new ArgumentNullException("Id is empty");
 
             Review review = _mapper.Map<ReviewDTO, Review>(reviewDTO);
             ReviewDTO newReviewDTO = new ReviewDTO();
             newReviewDTO.ReviewId = id;
-            Review reviewOld = await GetByIDAsync(newReviewDTO);
+            Review reviewOld = await GetByIdAsync(newReviewDTO);
             reviewOld = review;
             reviewOld.ReviewId = id;
             return await _updateRepository.UpdateAsync(reviewOld);

@@ -10,8 +10,8 @@ namespace Service.Interface
 {
     public interface IReviewService
     {
-        Task<IEnumerable<Review>> GetAllReviewAsync();
-        Task<Review> GetByIDAsync(ReviewDTO reviewDTO);
+        Task<IEnumerable<Review>> GetAllAsync();
+        Task<Review> GetByIdAsync(ReviewDTO reviewDTO);
         Task<Review> CreateAsync(ReviewDTO reviewDTO);
         Task DeleteAsync(ReviewDTO reviewDTO);
         Task<Review> UpdateAsync(ReviewDTO reviewDTO, string id);

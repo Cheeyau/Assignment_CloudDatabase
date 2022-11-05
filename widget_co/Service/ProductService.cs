@@ -42,21 +42,23 @@ namespace Service
         public async Task DeleteAsync(ProductDTO productDTO)
         {
             Product product = _mapper.Map<ProductDTO, Product>(productDTO);
-            if (!String.IsNullOrEmpty(product.ProductId)) 
-                await _deleteRepository.DeleteAsync(product);
+            if (String.IsNullOrEmpty(product.ProductId))
+                throw new ArgumentException("Cant find the order.");
+
+            await _deleteRepository.DeleteAsync(product);
         }
 
-        public async Task<IEnumerable<Product>> GetAllProductAsync()
+        public async Task<IEnumerable<Product>> GetAllAsync()
         {
 
             return await _readRepository.GetAllAsync().ToListAsync();
         }
 
-        public async Task<Product> GetByIDAsync(ProductDTO productDTO)
+        public async Task<Product> GetByIdAsync(ProductDTO productDTO)
         {
             Product product = _mapper.Map<ProductDTO, Product>(productDTO);
             if (String.IsNullOrEmpty(product.ProductId))
-                return product = new();
+                throw new ArgumentException("Cant find the product.");
 
             return ((product = await _readRepository.GetAllAsync().FirstOrDefaultAsync(p => p.ProductId == product.ProductId)) == null) ? product = new() : product;
         }
@@ -64,12 +66,12 @@ namespace Service
         public async Task<Product> UpdateAsync(ProductDTO productDTO, string id)
         {
             if (String.IsNullOrEmpty(id))
-                return new Product();
+                throw new ArgumentNullException("id is empty");  
 
             Product product = _mapper.Map<ProductDTO, Product>(productDTO);
             ProductDTO newProductDTO = new();
             newProductDTO.ProductId = id;
-            Product productOld = await GetByIDAsync(newProductDTO);
+            Product productOld = await GetByIdAsync(newProductDTO);
             productOld = product;
             productOld.ProductId = id;
             return await _updateRepository.UpdateAsync(productOld);

@@ -45,20 +45,20 @@ namespace Service
         public async Task DeleteAsync(OrderDTO orderDTO)
         {
             Order order = _mapper.Map<OrderDTO, Order>(orderDTO);
-            if (!String.IsNullOrEmpty(order.OrderId))
+            if (String.IsNullOrEmpty(order.OrderId))
                 await _deleteRepository.DeleteAsync(order);
         }
 
-        public async Task<IEnumerable<Order>> GetAllOrderAsync()
+        public async Task<IEnumerable<Order>> GetAllAsync()
         {
             return await _readRepository.GetAllAsync().ToListAsync();
         }
 
-        public async Task<Order> GetByIDAsync(OrderDTO orderDTO)
+        public async Task<Order> GetByIdAsync(OrderDTO orderDTO)
         {
             Order order = _mapper.Map<OrderDTO, Order>(orderDTO);
             if (String.IsNullOrEmpty(order.OrderId))
-                return order = new();
+                throw new ArgumentException("Cant find the order.");
 
             return ((order = await _readRepository.GetAllAsync().FirstOrDefaultAsync(p => p.OrderId == order.OrderId)) == null) ? order = new() : order;
         }
@@ -66,25 +66,25 @@ namespace Service
         public async Task<Order> UpdateAsync(OrderDTO orderDTO, string id)
         {
             if (String.IsNullOrEmpty(id))
-                return new Order();
+                throw new ArgumentNullException("Id is empty");
 
             Order order = _mapper.Map<OrderDTO, Order>(orderDTO);
             OrderDTO newOrderDTO = new();
             newOrderDTO.OrderId = id;
-            Order orderOld = await GetByIDAsync(newOrderDTO);
+            Order orderOld = await GetByIdAsync(newOrderDTO);
             orderOld = order;
             orderOld.OrderId = id;
             return await _updateRepository.UpdateAsync(orderOld);
         }
 
-        public async Task<Order> UpdateOrderShippingAsync(DateTime datetime, string id)
+        public async Task<Order> UpdateShippingAsync(DateTime datetime, string id)
         {
             if (String.IsNullOrEmpty(id) || String.IsNullOrEmpty(datetime.ToString()))
-                return new Order();
+                throw new ArgumentNullException("Id is empty");
 
             OrderDTO newOrderDTO = new();
             newOrderDTO.OrderId = id;
-            Order orderOld = await GetByIDAsync(newOrderDTO);
+            Order orderOld = await GetByIdAsync(newOrderDTO);
             orderOld.OrderShippedDate = datetime;
             return await _updateRepository.UpdateAsync(orderOld);
         }

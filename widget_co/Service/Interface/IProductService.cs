@@ -10,8 +10,8 @@ namespace Service.Interface
 {
     public interface IProductService
     {
-        Task<IEnumerable<Product>> GetAllProductAsync();
-        Task<Product> GetByIDAsync(ProductDTO productDTO);
+        Task<IEnumerable<Product>> GetAllAsync();
+        Task<Product> GetByIdAsync(ProductDTO productDTO);
         Task<Product> CreateAsync(ProductDTO productDTO);
         Task DeleteAsync(ProductDTO productDTO);
         Task<Product> UpdateAsync(ProductDTO productDTO, string id);
